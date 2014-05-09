@@ -30,6 +30,7 @@
         <TabControl HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="517" Margin="0,19,0,0">
             <TabItem Header="Лексичний аналіз">
                 <Grid Background="#FFE5E5E5">
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="92,73,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Синатксичний аналіз">
