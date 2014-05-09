@@ -30,16 +30,17 @@ namespace Lexer
         public const int T_ERROR = 4;
 
         private static int Position;
+        private static string input;
 
 
 
-
-        public static void PrintLexemes(String input)
+        public static void SetInput(String input)
         {
+            Scanner.input = input;
             Position = 0;
         }
 
-        private static char GetNextChar(String input)
+        private static char GetNextChar()
         {
             if (Position < input.Length)
             {
@@ -65,13 +66,13 @@ namespace Lexer
             }
         }
 
-        public static Token ScanOneToken(String input)
+        public static Token ScanOneToken()
         {
             char ch, nextch;
-            ch = GetNextChar(input);
+            ch = GetNextChar();
             while (Char.IsWhiteSpace(ch))
             {
-                ch = GetNextChar(input);
+                ch = GetNextChar();
             }
 
             Token token = new Token();
@@ -90,6 +91,7 @@ namespace Lexer
                     
                 case '0':
                 case '1':
+                case '2':
                 case '3':
                 case '4':
                 case '5':
@@ -101,19 +103,19 @@ namespace Lexer
                     while (Char.IsNumber(ch))
                     {
                         number += ch.ToString();
-                        ch = GetNextChar(input);
+                        ch = GetNextChar();
                     }
 
                     if (ch.Equals('.') || ch.Equals(','))
                     {
                         token.Type = T_FLOAT;
                         number += ',';
-                        ch = GetNextChar(input);
+                        ch = GetNextChar();
 
                         while (Char.IsNumber(ch))
                         {
                             number += ch.ToString();
-                            ch = GetNextChar(input);
+                            ch = GetNextChar();
                         }
 
                         token.Value = float.Parse(number);
@@ -131,7 +133,6 @@ namespace Lexer
                     token.Type = T_END;
                     break;
                 default:
-                    Console.WriteLine("Error here: " + ch);
                     token.Type = T_ERROR;
                     break;
 

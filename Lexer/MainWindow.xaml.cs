@@ -27,32 +27,34 @@ namespace Lexer
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            String input = "( 343423 () ) +4.512312003 4,323  - * ) 23.32";
-
+            String input = ExpressionLabel.Text;
+            String output = "";
             bool breakloop = false;
+            Scanner.SetInput(input);
             while (!breakloop)
             {
-                String output = "";
-                Scanner.Token token = Scanner.ScanOneToken(input);
+                Scanner.Token token = Scanner.ScanOneToken();
                 switch (token.Type)
                 {
-                    case Scanner.T_DIVIDE:
                     case Scanner.T_LPAREN:
                     case Scanner.T_RPAREN:
+                        output += "Parans: " + token.Value ;
+                        break;
+                    case Scanner.T_DIVIDE:
                     case Scanner.T_MINUS:
                     case Scanner.T_PLUS:
                     case Scanner.T_MULT:
-                        output = "divider: " + token.Value;
+                        output += "Operation: " + token.Value ;
                         break;
                     case Scanner.T_FLOAT:
-                        output = "float: " + token.Value.ToString();
+                        output += "Float: " + token.Value ;
                         break;
 
                     case Scanner.T_INTEGER:
-                        output = "Integer: " + token.Value.ToString();
+                        output += "Integer: " + token.Value;
                         break;
                     case Scanner.T_ERROR :
-                        output = "error";
+                        output += "error";
                         break;
                     case Scanner.T_END:
                         breakloop = true;
@@ -60,11 +62,11 @@ namespace Lexer
                     default:
                         break;
                 }
-                Console.WriteLine(output);
-                Console.ReadLine();
-
+                output += '\n';
 
             }
+            Console.Write(output);
+            ResultsTextBlock.Text = output;
         }
     }
 }
