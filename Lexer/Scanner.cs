@@ -54,7 +54,7 @@ namespace Lexer
             }
         }
 
-        private static char PeekNextChar(String input)
+        private static char PeekNextChar()
         {
             if (Position < input.Length)
             {
@@ -68,16 +68,14 @@ namespace Lexer
 
         public static Token ScanOneToken()
         {
-            char ch, nextch;
-            ch = GetNextChar();
-            while (Char.IsWhiteSpace(ch))
+            while (Char.IsWhiteSpace(PeekNextChar()))
             {
-                ch = GetNextChar();
+                GetNextChar();
             }
 
             Token token = new Token();
 
-            switch ((int)ch)
+            switch ((int)PeekNextChar())
             {
                 case T_DIVIDE:
                 case T_LPAREN:
@@ -85,8 +83,9 @@ namespace Lexer
                 case T_MINUS:
                 case T_PLUS:
                 case T_MULT:
-                    token.Type = (int)ch;
-                    token.Value = (char)ch;
+                    token.Type = (int)PeekNextChar();
+                    token.Value = (char)PeekNextChar();
+                    GetNextChar();
                     break;
                     
                 case '0':
@@ -100,22 +99,21 @@ namespace Lexer
                 case '8':
                 case '9':
                     String number = "";
-                    while (Char.IsNumber(ch))
+
+                    while (Char.IsNumber(PeekNextChar()))
                     {
-                        number += ch.ToString();
-                        ch = GetNextChar();
+                        number += GetNextChar();
                     }
 
-                    if (ch.Equals('.') || ch.Equals(','))
+                    if (PeekNextChar().Equals('.') || PeekNextChar().Equals(','))
                     {
                         token.Type = T_FLOAT;
                         number += ',';
-                        ch = GetNextChar();
+                        GetNextChar();
 
-                        while (Char.IsNumber(ch))
+                        while (Char.IsNumber(PeekNextChar()))
                         {
-                            number += ch.ToString();
-                            ch = GetNextChar();
+                            number += GetNextChar();
                         }
 
                         token.Value = float.Parse(number);
@@ -126,6 +124,8 @@ namespace Lexer
                         token.Type = T_INTEGER;
                         token.Value = int.Parse(number);
                     }
+
+                    
                     break;
 
                 case '\n':
