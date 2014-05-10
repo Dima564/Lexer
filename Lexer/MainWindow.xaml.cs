@@ -25,48 +25,60 @@ namespace Lexer
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void AppendTextToRTB(RichTextBox RTB, string Text, Brush Color)
         {
-            ResultsTextBlock.Document.Blocks.Clear();
-            String input = ExpressionLabel.Text;
-            String result = "";
-            bool breakloop = false;
+            TextRange range = new TextRange(RTB.Document.ContentEnd, RTB.Document.ContentEnd);
+            range.Text = Text ;
+            range.ApplyPropertyValue(TextElement.ForegroundProperty, Color);
+        }
+
+        private void LexicalAnalysis(object sender, RoutedEventArgs e)
+        {
+            
+            LxLogRTB.Document.Blocks.Clear();
+            LxResultRTB.Document.Blocks.Clear();
+
+
+            //Init Scanner with input
+            String input = LxExprLabel.Text;
             Scanner.SetInput(input);
+
+            bool breakloop = false;
             while (!breakloop)
             {
 
-                Paragraph paragraph = new Paragraph();
-                paragraph.Margin = new Thickness(0);
-                String output = "";
+                String prefix = "";
+                SolidColorBrush brush = Brushes.Silver;
 
-               
                 Scanner.Token token = Scanner.ScanOneToken();
+
+
                 switch (token.Type)
                 {
                     case Scanner.T_LPAREN:
                     case Scanner.T_RPAREN:
-                        output += "Parans: " + token.Value ;
-                        paragraph.Foreground = Brushes.Silver;
+                        prefix = "Parans: ";
+                        brush = Brushes.Silver;
                         break;
                     case Scanner.T_DIVIDE:
                     case Scanner.T_MINUS:
                     case Scanner.T_PLUS:
                     case Scanner.T_MULT:
-                        output += "Operation: " + token.Value ;
-                        paragraph.Foreground = Brushes.Green;
+                        prefix = "Operation: ";
+                        brush = Brushes.Green;
                         break;
                     case Scanner.T_FLOAT:
-                        output += "Float: " + token.Value ;
-                        paragraph.Foreground = Brushes.Blue;
-                        break;
+                        prefix  = "Float: ";
+                        brush = Brushes.Blue;
+                        break;  
                     case Scanner.T_INTEGER:
-                        output += "Integer: " + token.Value;
-                        paragraph.Foreground = Brushes.BlueViolet;
-
+                        prefix  = "Integer: ";
+                        brush = Brushes.Brown;
                         break;
                     case Scanner.T_ERROR :
-                        output += "error";
-                        paragraph.Foreground = Brushes.Red;
+                        prefix = "Error: ";
+                        brush =  Brushes.Red;
                         break;
                     case Scanner.T_END:
                         breakloop = true;
@@ -75,10 +87,13 @@ namespace Lexer
                         break;
                 }
 
-                
-                paragraph.Inlines.Add(new Run(output));
+                Paragraph paragraph = new Paragraph();
+                paragraph.Inlines.Add(new Run(prefix + token.Value));
+                paragraph.Foreground = brush;
                 paragraph.Margin = new Thickness(0);
-                ResultsTextBlock.Document.Blocks.Add(paragraph);
+                LxLogRTB.Document.Blocks.Add(paragraph);
+                AppendTextToRTB(LxResultRTB, token.Value.ToString(), brush);
+
 
             }
            

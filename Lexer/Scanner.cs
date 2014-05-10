@@ -74,6 +74,7 @@ namespace Lexer
             }
 
             Token token = new Token();
+            token.Value = "";
 
             switch ((int)PeekNextChar())
             {
@@ -134,6 +135,9 @@ namespace Lexer
                     break;
                 default:
                     token.Type = T_ERROR;
+                    while (!"0123456789()".Contains(PeekNextChar() ) || PeekNextChar().Equals('\0'))
+                        GetNextChar();
+                    token.Value = "Invalid symbol";
                     break;
 
             }

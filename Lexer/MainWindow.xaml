@@ -31,28 +31,11 @@
         <TabControl HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="517" Margin="0,19,0,0">
             <TabItem Header="Лексичний аналіз">
                 <Grid Background="#FFE5E5E5">
-                    <Button Content="Process" HorizontalAlignment="Left" Margin="413,17,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-                    <RichTextBox  Name="ResultsTextBlock" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Height="153" Width="212" Background="#FFE5E5E5">
-                        <FlowDocument>
-                            <FlowDocument.Resources>
-                                <!-- This style is used to set the margins for all paragraphs in the FlowDocument to 0. -->
-                                <Style TargetType="{x:Type Paragraph}">
-                                    <Setter Property="Margin" Value="0"/>
-                                </Style>
-                            </FlowDocument.Resources>
-
-                            <Paragraph>
-                                Spacing between paragraphs is caused by margins set on the paragraphs.  Two adjacent margins
-    will "collapse" to the larger of the two margin widths, rather than doubling up.
-                            </Paragraph>
-
-                            <Paragraph>
-                                To eliminate extra spacing between two paragraphs, just set the paragraph margins to 0.
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>
-                    <TextBox  Name="ExpressionLabel" HorizontalAlignment="Left" Height="23" Margin="168,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
+                    <Button Content="Process" HorizontalAlignment="Left" Margin="413,17,0,0" VerticalAlignment="Top" Width="75" Click="LexicalAnalysis"/>
+                    <RichTextBox  Name="LxLogRTB" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Height="153" Width="153" Background="#FFE5E5E5"/>
+                    <TextBox  Name="LxExprLabel" HorizontalAlignment="Left" Height="23" Margin="168,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
                     <Label Content="Enter your expression here:" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top"/>
+                    <RichTextBox Name="LxResultRTB" HorizontalAlignment="Left" Height="30" Margin="168,83,0,0" VerticalAlignment="Top" Width="240" Background="#FFE5E5E5"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Синатксичний аналіз">
