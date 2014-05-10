@@ -41,7 +41,7 @@ namespace Lexer
 
 
             //Init Scanner with input
-            String input = LxExprLabel.Text;
+            String input = LxExprTextBox.Text;
             Scanner.SetInput(input);
 
             bool breakloop = false;
@@ -97,6 +97,13 @@ namespace Lexer
 
             }
            
+        }
+
+        private void SyntaxAnalysis(object sender, RoutedEventArgs e)
+        {
+            Scanner.SetInput(PrsExprTextBox.Text);
+            Parser.InitParser(Scanner.GetLexemes());
+            MessageBox.Show(Parser.Match().ToString());
         }
     }
 }

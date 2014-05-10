@@ -33,13 +33,15 @@
                 <Grid Background="#FFE5E5E5">
                     <Button Content="Process" HorizontalAlignment="Left" Margin="413,17,0,0" VerticalAlignment="Top" Width="75" Click="LexicalAnalysis"/>
                     <RichTextBox  Name="LxLogRTB" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Height="153" Width="153" Background="#FFE5E5E5"/>
-                    <TextBox  Name="LxExprLabel" HorizontalAlignment="Left" Height="23" Margin="168,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
+                    <TextBox  Name="LxExprTextBox" HorizontalAlignment="Left" Height="23" Margin="168,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
                     <Label Content="Enter your expression here:" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top"/>
                     <RichTextBox Name="LxResultRTB" HorizontalAlignment="Left" Height="30" Margin="168,83,0,0" VerticalAlignment="Top" Width="240" Background="#FFE5E5E5"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Синатксичний аналіз">
                 <Grid Background="#FFE5E5E5">
+                    <TextBox Name="PrsExprTextBox" HorizontalAlignment="Left" Height="23" Margin="25,50,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="194"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Margin="265,53,0,0" VerticalAlignment="Top" Width="75" Click="SyntaxAnalysis"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Граматики">

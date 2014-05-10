@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,17 +10,27 @@ namespace Lexer
     static class Scanner
     {
 
-     
-
         private static int Position;
         private static string input;
-
-
 
         public static void SetInput(String input)
         {
             Scanner.input = input;
             Position = 0;
+        }
+
+
+        public static ArrayList GetLexemes()
+        {
+            ArrayList lexemes = new ArrayList();
+            Token t = ScanOneToken();
+            while (t.Type != Token.T_END)
+            {
+                lexemes.Add(t);
+                t = ScanOneToken();
+            }
+
+            return lexemes;
         }
 
         private static char GetNextChar()
