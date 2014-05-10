@@ -36,12 +36,12 @@ namespace Lexer
         private void LexicalAnalysis(object sender, RoutedEventArgs e)
         {
             
-            LxLogRTB.Document.Blocks.Clear();
-            LxResultRTB.Document.Blocks.Clear();
+            LexerLogTextBox.Document.Blocks.Clear();
+            LexerResultTextBox.Document.Blocks.Clear();
 
 
             //Init Scanner with input
-            String input = LxExprTextBox.Text;
+            String input = LexerExpressionTextBox.Text;
             Scanner.SetInput(input);
 
             bool breakloop = false;
@@ -91,8 +91,8 @@ namespace Lexer
                 paragraph.Inlines.Add(new Run(prefix + token.Value));
                 paragraph.Foreground = brush;
                 paragraph.Margin = new Thickness(0);
-                LxLogRTB.Document.Blocks.Add(paragraph);
-                AppendTextToRTB(LxResultRTB, token.Value.ToString(), brush);
+                LexerLogTextBox.Document.Blocks.Add(paragraph);
+                AppendTextToRTB(LexerResultTextBox, token.Value.ToString(), brush);
 
 
             }
@@ -101,9 +101,18 @@ namespace Lexer
 
         private void SyntaxAnalysis(object sender, RoutedEventArgs e)
         {
-            Scanner.SetInput(PrsExprTextBox.Text);
+            Scanner.SetInput(SyntaxExpressionTextBox.Text);
             Parser.InitParser(Scanner.GetLexemes());
-            MessageBox.Show(Parser.Match().ToString());
+            if (Parser.Match())
+            {
+                ResultLabel.Foreground = Brushes.Green;
+                ResultLabel.Content = "Введений вираз правильний.";
+            }
+            else
+            {
+                ResultLabel.Foreground = Brushes.Red;
+                ResultLabel.Content = "Введений вираз неправильний.";
+            }
         }
     }
 }
