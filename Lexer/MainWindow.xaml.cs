@@ -51,36 +51,36 @@ namespace Lexer
                 String prefix = "";
                 SolidColorBrush brush = Brushes.Silver;
 
-                Scanner.Token token = Scanner.ScanOneToken();
+                Token token = Scanner.ScanOneToken();
 
 
                 switch (token.Type)
                 {
-                    case Scanner.T_LPAREN:
-                    case Scanner.T_RPAREN:
+                    case Token.T_LPAREN:
+                    case Token.T_RPAREN:
                         prefix = "Parans: ";
                         brush = Brushes.Silver;
                         break;
-                    case Scanner.T_DIVIDE:
-                    case Scanner.T_MINUS:
-                    case Scanner.T_PLUS:
-                    case Scanner.T_MULT:
+                    case Token.T_DIVIDE:
+                    case Token.T_MINUS:
+                    case Token.T_PLUS:
+                    case Token.T_MULT:
                         prefix = "Operation: ";
                         brush = Brushes.Green;
                         break;
-                    case Scanner.T_FLOAT:
+                    case Token.T_FLOAT:
                         prefix  = "Float: ";
                         brush = Brushes.Blue;
-                        break;  
-                    case Scanner.T_INTEGER:
+                        break;
+                    case Token.T_INTEGER:
                         prefix  = "Integer: ";
                         brush = Brushes.Brown;
                         break;
-                    case Scanner.T_ERROR :
+                    case Token.T_ERROR:
                         prefix = "Error: ";
                         brush =  Brushes.Red;
                         break;
-                    case Scanner.T_END:
+                    case Token.T_END:
                         breakloop = true;
                         break;
                     default:

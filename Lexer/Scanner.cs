@@ -9,25 +9,7 @@ namespace Lexer
     static class Scanner
     {
 
-        public struct Token
-        {
-            public int Type;
-            public Object Value;
-            
-        }
-
-        public const int T_LPAREN = '(';
-        public const int T_RPAREN = ')';
-        public const int T_PLUS = '+';
-        public const int T_MINUS = '-';
-        public const int T_MULT = '*';
-        public const int T_DIVIDE = '/';
-        public const int T_WHITESPACE = ' ';
-
-        public const int T_INTEGER = 1;
-        public const int T_FLOAT = 2;
-        public const int T_END = 3;
-        public const int T_ERROR = 4;
+     
 
         private static int Position;
         private static string input;
@@ -78,12 +60,12 @@ namespace Lexer
 
             switch ((int)PeekNextChar())
             {
-                case T_DIVIDE:
-                case T_LPAREN:
-                case T_RPAREN:
-                case T_MINUS:
-                case T_PLUS:
-                case T_MULT:
+                case Token.T_DIVIDE:
+                case Token.T_LPAREN:
+                case Token.T_RPAREN:
+                case Token.T_MINUS:
+                case Token.T_PLUS:
+                case Token.T_MULT:
                     token.Type = (int)PeekNextChar();
                     token.Value = (char)PeekNextChar();
                     GetNextChar();
@@ -108,7 +90,7 @@ namespace Lexer
 
                     if (PeekNextChar().Equals('.') || PeekNextChar().Equals(','))
                     {
-                        token.Type = T_FLOAT;
+                        token.Type = Token.T_FLOAT;
                         number += ',';
                         GetNextChar();
 
@@ -122,7 +104,7 @@ namespace Lexer
                     }
                     else
                     {
-                        token.Type = T_INTEGER;
+                        token.Type = Token.T_INTEGER;
                         token.Value = int.Parse(number);
                     }
 
@@ -131,10 +113,10 @@ namespace Lexer
 
                 case '\n':
                 case '\0':
-                    token.Type = T_END;
+                    token.Type = Token.T_END;
                     break;
                 default:
-                    token.Type = T_ERROR;
+                    token.Type = Token.T_ERROR;
                     while (!"0123456789()".Contains(PeekNextChar() ) || PeekNextChar().Equals('\0'))
                         GetNextChar();
                     token.Value = "Invalid symbol";
