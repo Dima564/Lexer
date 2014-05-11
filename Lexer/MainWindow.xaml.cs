@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -102,7 +103,8 @@ namespace Lexer
         private void SyntaxAnalysis(object sender, RoutedEventArgs e)
         {
             Scanner.SetInput(SyntaxExpressionTextBox.Text);
-            Parser.InitParser(Scanner.GetLexemes());
+            ArrayList lexemes = Scanner.GetLexemes();
+            Parser.InitParser(lexemes);
             if (Parser.Match())
             {
                 ResultLabel.Foreground = Brushes.Green;
@@ -113,6 +115,9 @@ namespace Lexer
                 ResultLabel.Foreground = Brushes.Red;
                 ResultLabel.Content = "Введений вираз неправильний.";
             }
+
+            SyntaxTree tree = new SyntaxTree(lexemes);
+            tree.Traverse();
         }
     }
 }
