@@ -123,20 +123,13 @@ namespace Lexer
 
         private void ShowSyntaxTree(object sender, RoutedEventArgs e)
         {
-            Canvas c = new Canvas();
-            c.Height = 200;
-            c.Width = 500;
+            Scanner.SetInput(SyntaxExpressionTextBox.Text);
+            ArrayList lexemes = Scanner.GetLexemes();
 
-            //Line myLine = new Line();
-            //myLine.Stroke = System.Windows.Media.Brushes.LightSteelBlue;
-            //myLine.X1 = 1;
-            //myLine.X2 = 50;
-            //myLine.Y1 = 1;
-            //myLine.Y2 = 50;
-            //myLine.HorizontalAlignment = HorizontalAlignment.Left;
-            //myLine.VerticalAlignment = VerticalAlignment.Center;
-            //myLine.StrokeThickness = 2;
-            //c.Children.Add(myLine);
+            TreeCanvas c = new TreeCanvas();
+            c.DrawTree((new SyntaxTree(lexemes)).GetRoot());
+
+           
             new TreeWindow(c).Show();
         }
 
@@ -148,61 +141,6 @@ namespace Lexer
         }
 
 
-        /* Window Animations
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-            Console.WriteLine(this.ActualHeight);
-            TabItem a = e.AddedItems[0] as TabItem;
-            switch (a.Name)
-            {
-                case "Lexer":
-                    AnimateWindowHeight(this, 350);                
-
-                    break;
-                case "Syntax":
-                    AnimateWindowHeight(this, 500);                
-                    break;
-
-                default:
-                    AnimateWindowHeight(this, 350);                
-
-                    break;
-            }
-
-
-        }
-
-        public void AnimateWindowHeight(Window window,double height)
-        {
-            window.BeginInit();
-            //setting SizeToContent of window to Height get you the exact value of window height required to display completely
-            window.SizeToContent = System.Windows.SizeToContent.Height;
-           
-            window.SizeToContent = System.Windows.SizeToContent.Manual;
-            //run the animation code at backgroud for smoothness
-            window.Dispatcher.BeginInvoke(new Action(() =>
-            {
-                DoubleAnimation heightAnimation = new DoubleAnimation();
-                heightAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
-                heightAnimation.From = window.ActualHeight;
-                heightAnimation.To = height;
-                heightAnimation.FillBehavior = FillBehavior.HoldEnd;
-                window.BeginAnimation(Window.HeightProperty, heightAnimation);
-                LexerGrid.BeginAnimation(Grid.HeightProperty, heightAnimation);
-            }), null);
-            window.EndInit();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.ActualHeight == 500)
-                AnimateWindowHeight(this, 350);
-            else 
-                AnimateWindowHeight(this, 500);
-        }
-         * 
-         * */
 
 
 
