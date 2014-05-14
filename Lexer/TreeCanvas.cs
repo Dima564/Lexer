@@ -16,8 +16,8 @@ namespace Lexer
 
         public TreeCanvas()
         {
-            Height = 500;
-            Width = 500;
+            Height = 1000;
+            Width = 1000;
         }
 
         public void DrawTree(SyntaxTree.Node Root)
@@ -26,14 +26,14 @@ namespace Lexer
           
             Background = Brushes.White;
          //   AddLabel("hello", 50, 50);
-            DrawNode(Root, 0, 250, 25);
+            DrawNode(Root, 0, 500, 25);
 
         }
 
         private void DrawNode(SyntaxTree.Node n, int level, int x, int y)
         {
             AddLabel(n.Content, x, y);
-
+            Console.WriteLine(n.Content + " : " + level.ToString());
             if (n.Children.Count == 1)
             {
                 AddLine(x+10, y+20, x+10, y + LEVEL_HEIGHT);
@@ -41,20 +41,22 @@ namespace Lexer
             }
             else if (n.Children.Count == 2)
             {
-                AddLine(x, y, x - 70, y + LEVEL_HEIGHT);
-                AddLine(x, y, x + 70, y + LEVEL_HEIGHT);
-                DrawNode(n.Children[0] as SyntaxTree.Node, level + 1, x - 70, y + LEVEL_HEIGHT);
-                DrawNode(n.Children[1] as SyntaxTree.Node, level + 1, x + 70, y + LEVEL_HEIGHT);
+                int xOffset = level == 4 ? 70 : 70 * (4 - level);
+                AddLine(x, y, x - xOffset, y + LEVEL_HEIGHT);
+                AddLine(x, y, x + xOffset, y + LEVEL_HEIGHT);
+                DrawNode(n.Children[0] as SyntaxTree.Node, level + 1, x - xOffset, y + LEVEL_HEIGHT);
+                DrawNode(n.Children[1] as SyntaxTree.Node, level + 1, x + xOffset, y + LEVEL_HEIGHT);
 
             }
             else if (n.Children.Count == 3)
             {
-                AddLine(x + 10, y, x - 100, y + LEVEL_HEIGHT);
+                int xOffset = level == 4 ? 100 : 100 * (4 - level);
+                AddLine(x + 10, y, x - xOffset, y + LEVEL_HEIGHT);
                 AddLine(x + 10, y, x + 10, y + LEVEL_HEIGHT);
-                AddLine(x + 10, y, x + 100, y + LEVEL_HEIGHT);
-                DrawNode(n.Children[0] as SyntaxTree.Node, level + 1, x - 100, y + LEVEL_HEIGHT);
+                AddLine(x + 10, y, x + xOffset, y + LEVEL_HEIGHT);
+                DrawNode(n.Children[0] as SyntaxTree.Node, level + 1, x - xOffset, y + LEVEL_HEIGHT);
                 DrawNode(n.Children[1] as SyntaxTree.Node, level + 1, x, y + LEVEL_HEIGHT);
-                DrawNode(n.Children[2] as SyntaxTree.Node, level + 1, x + 100, y + LEVEL_HEIGHT);
+                DrawNode(n.Children[2] as SyntaxTree.Node, level + 1, x + xOffset, y + LEVEL_HEIGHT);
             }
         }
 

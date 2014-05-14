@@ -25,8 +25,8 @@ namespace Lexer
         public TreeWindow(Canvas c)
         {
             this.c = c;
-            this.Width = c.Width;
-            this.Height = 50;
+            this.Width = 1500;
+            this.Height = 1000;
             InitializeComponent();
             MainGrid.Children.Add(c);
         }
@@ -51,7 +51,7 @@ namespace Lexer
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            AnimateWindowHeight(this, c.Height);
+        //    AnimateWindowHeight(this, c.Height);
 
         }
 

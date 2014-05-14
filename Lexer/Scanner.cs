@@ -118,8 +118,6 @@ namespace Lexer
                         token.Type = Token.T_INTEGER;
                         token.Value = int.Parse(number);
                     }
-
-                    
                     break;
 
                 case '\n':
@@ -132,15 +130,8 @@ namespace Lexer
                         GetNextChar();
                     token.Value = "Invalid symbol";
                     break;
-
             }
-
             return token;
-
         }
-
-
-    
-
     }
 }
