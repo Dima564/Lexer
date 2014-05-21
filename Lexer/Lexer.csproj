@@ -60,6 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ExpressionTree.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="SyntaxTree.cs" />
     <Compile Include="Token.cs" />

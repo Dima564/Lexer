@@ -101,46 +101,40 @@ namespace Lexer
            
         }
 
-        private void SyntaxAnalysis(object sender, RoutedEventArgs e)
-        {
-
-            if (SyntaxExpressionTextBox.Text.Length == 0)
-            {
-                ResultLabel.Content = "Field is empty. Please, enter expression";
-                return;
-            }
-            Scanner.SetInput(SyntaxExpressionTextBox.Text);
-            ArrayList lexemes = Scanner.GetLexemes();
-            Parser.InitParser(lexemes);
-            
-            if (Parser.Match())
-            {
-                ResultLabel.Foreground = Brushes.Green;
-                ResultLabel.Content = "The expression is correct.";
-            }
-            else
-            {
-                ResultLabel.Foreground = Brushes.Red;
-                ResultLabel.Content = "The expression is incorrect.";
-            }
-
-            SyntaxTree tree = new SyntaxTree(lexemes);
-            tree.Traverse();
-        }
-
+     
         private void ShowSyntaxTree(object sender, RoutedEventArgs e)
         {
 
             if (SyntaxExpressionTextBox.Text.Length == 0)
             {
-                ResultLabel.Content = "Field is empty. Please, enter expression";
+                SyntaxResultLabel.Content = "Field is empty. Please, enter expression";
                 return;
             }
             Scanner.SetInput(SyntaxExpressionTextBox.Text);
             ArrayList lexemes = Scanner.GetLexemes();
+            Parser.InitParser(lexemes);
+
+            if (Parser.Match())
+            {
+                SyntaxResultLabel.Foreground = Brushes.Green;
+                SyntaxResultLabel.Content = "The expression is correct.";
+            }
+            else
+            {
+                SyntaxResultLabel.Foreground = Brushes.Red;
+                SyntaxResultLabel.Content = "The expression is incorrect.";
+                return;
+            }
+
             SyntaxTree.Node Root = new SyntaxTree(lexemes).GetRoot();
+
             if (Root != null)
-                new TreeWindow(TreeDrawer.DrawTree(Root)).Show();
+            {
+                new ExpressionTree().Traverse(Root);
+                new TreeWindow(TreeDrawer.DrawTree(Root,3)).Show();
+
+            }
+           
         }
 
 
@@ -150,11 +144,36 @@ namespace Lexer
 
         }
 
+        private void ShowGrammarTree(object sender, RoutedEventArgs e)
+        {
+            if (GrammarExpressionTextBox.Text.Length == 0)
+            {
+                GrammarResultLabel.Content = "Field is empty. Please, enter expression";
+                return;
+            }
+            Scanner.SetInput(GrammarExpressionTextBox.Text);
+            ArrayList lexemes = Scanner.GetLexemes();
+            Parser.InitParser(lexemes);
 
+            if (Parser.Match())
+            {
+                GrammarResultLabel.Foreground = Brushes.Green;
+                GrammarResultLabel.Content = "The expression is correct.";
+            }
+            else
+            {
+                GrammarResultLabel.Foreground = Brushes.Red;
+                GrammarResultLabel.Content = "The expression is incorrect.";
+                return;
+            }
 
+            SyntaxTree.Node Root = new SyntaxTree(lexemes).GetRoot();
+            if (Root != null)
+                new TreeWindow(TreeDrawer.DrawTree(Root)).Show();
+            
+          
+        }
 
-
-     
 
     }
 }
