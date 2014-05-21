@@ -32,8 +32,6 @@ namespace Lexer
         }
         public static bool Factor()
         {
-
-            
             int save = Position;
             bool match = Terminal(Token.T_INTEGER);
             if (!match)
@@ -47,13 +45,11 @@ namespace Lexer
                     match = Terminal(Token.T_LPAREN) && SignedExpression() && Terminal(Token.T_RPAREN);
                 }
             }
-
             return match;
         }
 
         public static bool Term()
         {
-
             int save = Position;
             bool match = Factor() && Terminal(Token.T_MULT) && Term();
             if (match) return true;
@@ -61,25 +57,19 @@ namespace Lexer
             Position = save;
             match = Factor() && Terminal(Token.T_DIVIDE) && Term();
             if (match) return true;
-
-
             Position = save;
             match = Factor();
-          
             return match;
         }
 
         private static bool Expression()
         {
-
             int save = Position;
             bool match = Term() && Terminal(Token.T_PLUS) && Expression();
-
             if (!match)
             {
                 Position = save;
                 match = Term() && Terminal(Token.T_MINUS) && Expression();
-
                 if (!match)
                 {
                     Position = save;
@@ -94,11 +84,9 @@ namespace Lexer
             int save = Position;
             bool match = Terminal(Token.T_MINUS) && Expression();
             if (match) return true;
-
             Position = save;
             match = Terminal(Token.T_PLUS) && Expression();
             if (match) return true;
-
             Position = save;
             match = Expression();
             return match;

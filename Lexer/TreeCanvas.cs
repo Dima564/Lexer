@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Lexer
@@ -14,24 +16,63 @@ namespace Lexer
     {
         private const int LEVEL_HEIGHT = 50;
 
-        public TreeCanvas()
-        {
-            Height = 1000;
-            Width = 1000;
-        }
-
-        public void DrawTree(SyntaxTree.Node Root)
+        int minX = 1000;
+        int maxX = 0;
+        int maxY = 0;
+        public TreeCanvas(SyntaxTree.Node Root)
         {
             this.Children.Clear();
-          
             Background = Brushes.White;
-         //   AddLabel("hello", 50, 50);
-            DrawNode(Root, 0, 500, 25);
+            //   AddLabel("hello", 50, 50);
+            DrawNode(Root, 0, 700, 25);
+            minX -= 30;
+            maxY += 30;
+            maxX += 50;
 
+            Rect rect1 = new Rect(0, 0,0, 0);
+
+            System.Windows.Int32Rect rcFrom = new System.Windows.Int32Rect();
+            rcFrom.X = minX;
+            rcFrom.Y = 5;
+            rcFrom.Width = maxX - minX;
+            rcFrom.Height = maxY - 5;
+
+
+            // VERY important
+            Size size = new Size(maxX, maxY);
+            this.Measure(size);
+            this.Arrange(rect1);
+
+            RenderTargetBitmap renderBitmap =
+               new RenderTargetBitmap(
+                maxX,
+                maxY,
+                 96d,
+                 96d,
+                 PixelFormats.Pbgra32);
+            renderBitmap.Render(this);
+            BitmapSource bs = new CroppedBitmap(renderBitmap as BitmapSource, rcFrom);
+
+           
+            using (FileStream outStream = new FileStream("D:\\file.png", FileMode.Create))
+            {
+                // Use png encoder for our data
+                PngBitmapEncoder encoder = new PngBitmapEncoder();
+                // push the rendered bitmap to it
+                encoder.Frames.Add(BitmapFrame.Create(bs as BitmapSource));
+                // save the data to the stream
+                encoder.Save(outStream);
+            }
         }
 
+   
         private void DrawNode(SyntaxTree.Node n, int level, int x, int y)
         {
+
+            maxY = (y > maxY) ? y : maxY;
+            maxX = (x > maxX) ? x : maxX;
+            minX = (x < minX) ? x : minX;
+
             AddLabel(n.Content, x, y);
             Console.WriteLine(n.Content + " : " + level.ToString());
             if (n.Children.Count == 1)
@@ -50,10 +91,15 @@ namespace Lexer
             }
             else if (n.Children.Count == 3)
             {
+
+
+
                 int xOffset = level == 4 ? 100 : 100 * (4 - level);
                 AddLine(x + 10, y, x - xOffset, y + LEVEL_HEIGHT);
                 AddLine(x + 10, y, x + 10, y + LEVEL_HEIGHT);
                 AddLine(x + 10, y, x + xOffset, y + LEVEL_HEIGHT);
+
+
                 DrawNode(n.Children[0] as SyntaxTree.Node, level + 1, x - xOffset, y + LEVEL_HEIGHT);
                 DrawNode(n.Children[1] as SyntaxTree.Node, level + 1, x, y + LEVEL_HEIGHT);
                 DrawNode(n.Children[2] as SyntaxTree.Node, level + 1, x + xOffset, y + LEVEL_HEIGHT);
@@ -98,6 +144,8 @@ namespace Lexer
             //Children.Add(myLine);
             Children.Insert(1, myLine);
         }
+
+       
 
     }
 }

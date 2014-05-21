@@ -125,11 +125,7 @@ namespace Lexer
         {
             Scanner.SetInput(SyntaxExpressionTextBox.Text);
             ArrayList lexemes = Scanner.GetLexemes();
-
-            TreeCanvas c = new TreeCanvas();
-            c.DrawTree((new SyntaxTree(lexemes)).GetRoot());
-
-           
+            TreeCanvas c = new TreeCanvas((new SyntaxTree(lexemes)).GetRoot());
             new TreeWindow(c).Show();
         }
 

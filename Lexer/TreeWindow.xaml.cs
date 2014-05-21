@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,13 +23,29 @@ namespace Lexer
     {
 
         Canvas c;
+        private int _height;
+        public int CustomHeight
+        {
+            get { return _height; }
+            set
+            {
+                if (value != _height)
+                {
+                    _height = value;
+                    if (PropertyChanged != null)
+                        PropertyChanged(this, new PropertyChangedEventArgs("CustomHeight"));
+                }
+            }
+        }
+
+
         public TreeWindow(Canvas c)
         {
             this.c = c;
-            this.Width = 1500;
-            this.Height = 1000;
             InitializeComponent();
             MainGrid.Children.Add(c);
+            CustomHeight = (int)c.ActualHeight;
+
         }
 
     
@@ -59,6 +76,9 @@ namespace Lexer
         {
 
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
 
 
     }
