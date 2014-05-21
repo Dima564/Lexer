@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +24,9 @@ namespace Lexer
     public partial  class TreeWindow : Window
     {
 
-        Canvas c;
+        Image img;
         private int _height;
+        private int _width;
         public int CustomHeight
         {
             get { return _height; }
@@ -38,46 +41,72 @@ namespace Lexer
             }
         }
 
-
-        public TreeWindow(Canvas c)
+        public int CustomWidth
         {
-            this.c = c;
-            InitializeComponent();
-            MainGrid.Children.Add(c);
-            CustomHeight = (int)c.ActualHeight;
-
-        }
-
-    
-
-        public void AnimateWindowHeight(Window window, double height)
-        {
-            window.BeginInit();
-            window.SizeToContent = System.Windows.SizeToContent.Manual;
-            window.Dispatcher.BeginInvoke(new Action(() =>
+            get { return _width; }
+            set
             {
-                DoubleAnimation heightAnimation = new DoubleAnimation();
-                heightAnimation.Duration = new Duration(TimeSpan.FromSeconds(10.0));
-                heightAnimation.To = height;
-                heightAnimation.FillBehavior = FillBehavior.HoldEnd;
-                window.BeginAnimation(Window.HeightProperty, heightAnimation);
-            }), null);
-
-            window.EndInit();
+                if (value != _width)
+                {
+                    _width = value;
+                    if (PropertyChanged != null)
+                        PropertyChanged(this, new PropertyChangedEventArgs("CustomWidth"));
+                }
+            }
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+
+        public TreeWindow(Image img)
         {
-        //    AnimateWindowHeight(this, c.Height);
-
+            this.img = img;
+            InitializeComponent();
+            CustomHeight = (int)img.Height;
+            CustomWidth = (int)img.Width;
+            MainGrid.Children.Add(img);
         }
+
+   
 
         private void SaveImage(object sender, RoutedEventArgs e)
         {
 
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            dlg.FileName = "Image"; // Default file name
+            dlg.DefaultExt = ".png"; // Default file extension
+            dlg.Filter = "PNG (.png)|*.png"; // Filter files by extension
+
+            // Show save file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process save file dialog box results
+            if (result == true)
+            {
+                // Save document
+                string filename = dlg.FileName;
+                
+
+
+                using (FileStream outStream = new FileStream(filename, FileMode.Create))
+                {
+                    // Use png encoder for our data
+                    PngBitmapEncoder encoder = new PngBitmapEncoder();
+                    // push the rendered bitmap to it
+                    encoder.Frames.Add(BitmapFrame.Create(img.Source as BitmapSource));
+                    // save the data to the stream
+                    encoder.Save(outStream);
+                }
+            }
+
+
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private void Window_loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
 
 
 

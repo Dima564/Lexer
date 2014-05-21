@@ -63,7 +63,7 @@
     <Compile Include="Parser.cs" />
     <Compile Include="SyntaxTree.cs" />
     <Compile Include="Token.cs" />
-    <Compile Include="TreeCanvas.cs" />
+    <Compile Include="TreeDrawer.cs" />
     <Compile Include="TreeWindow.xaml.cs">
       <DependentUpon>TreeWindow.xaml</DependentUpon>
     </Compile>
