@@ -103,18 +103,25 @@ namespace Lexer
 
         private void SyntaxAnalysis(object sender, RoutedEventArgs e)
         {
+
+            if (SyntaxExpressionTextBox.Text.Length == 0)
+            {
+                ResultLabel.Content = "Field is empty. Please, enter expression";
+                return;
+            }
             Scanner.SetInput(SyntaxExpressionTextBox.Text);
             ArrayList lexemes = Scanner.GetLexemes();
             Parser.InitParser(lexemes);
+            
             if (Parser.Match())
             {
                 ResultLabel.Foreground = Brushes.Green;
-                ResultLabel.Content = "Введений вираз правильний.";
+                ResultLabel.Content = "The expression is correct.";
             }
             else
             {
                 ResultLabel.Foreground = Brushes.Red;
-                ResultLabel.Content = "Введений вираз неправильний.";
+                ResultLabel.Content = "The expression is incorrect.";
             }
 
             SyntaxTree tree = new SyntaxTree(lexemes);
@@ -123,9 +130,17 @@ namespace Lexer
 
         private void ShowSyntaxTree(object sender, RoutedEventArgs e)
         {
+
+            if (SyntaxExpressionTextBox.Text.Length == 0)
+            {
+                ResultLabel.Content = "Field is empty. Please, enter expression";
+                return;
+            }
             Scanner.SetInput(SyntaxExpressionTextBox.Text);
             ArrayList lexemes = Scanner.GetLexemes();
-            new TreeWindow(TreeDrawer.DrawTree((new SyntaxTree(lexemes)).GetRoot())).Show();
+            SyntaxTree.Node Root = new SyntaxTree(lexemes).GetRoot();
+            if (Root != null)
+                new TreeWindow(TreeDrawer.DrawTree(Root)).Show();
         }
 
 
