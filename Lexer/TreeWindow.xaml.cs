@@ -69,12 +69,10 @@ namespace Lexer
 
         private void SaveImage(object sender, RoutedEventArgs e)
         {
-
             Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
             dlg.FileName = "Image"; // Default file name
             dlg.DefaultExt = ".png"; // Default file extension
             dlg.Filter = "PNG (.png)|*.png"; // Filter files by extension
-
             // Show save file dialog box
             Nullable<bool> result = dlg.ShowDialog();
 
@@ -83,9 +81,6 @@ namespace Lexer
             {
                 // Save document
                 string filename = dlg.FileName;
-                
-
-
                 using (FileStream outStream = new FileStream(filename, FileMode.Create))
                 {
                     // Use png encoder for our data
