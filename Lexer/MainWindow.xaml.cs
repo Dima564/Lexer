@@ -130,7 +130,7 @@ namespace Lexer
 
             if (Root != null)
             {
-                new ExpressionTree().Traverse(Root);
+                new ExpressionTree().RemoveGrammarNotation(Root);
                 new TreeWindow(TreeDrawer.DrawTree(Root,3)).Show();
 
             }
@@ -175,22 +175,6 @@ namespace Lexer
         }
 
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Scanner.SetInput(PolishExprTextBox.Text);
-            ArrayList lexemes = Scanner.GetLexemes();
-
-            //Console.WriteLine(PolishNotation.ToString(PolishNotation.InfixToPostfix(lexemes)));
-            Console.WriteLine(PolishNotation.ToString(PolishNotation.InfixToPrefix(lexemes)));
-
-            //Console.WriteLine(PolishNotation.EvaluatePostfix(PolishNotation.InfixToPostfix(lexemes)));
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Convert(object sender, RoutedEventArgs e)
         {
@@ -208,8 +192,16 @@ namespace Lexer
 
                 if (Parser.Match())
                 {
-                    PrefixLabel.Content = PolishNotation.ToString(PolishNotation.InfixToPrefix(lexemes));
-                    PostfixLabel.Content = PolishNotation.ToString(PolishNotation.InfixToPostfix(lexemes));
+                    try
+                    {
+                        PrefixLabel.Content = PolishNotation.ToString(PolishNotation.InfixToPrefix(lexemes));
+                        PostfixLabel.Content = PolishNotation.ToString(PolishNotation.InfixToPostfix(lexemes));
+
+                    }
+                    catch (Exception ex)
+                    {
+                        PolishInvalidExpression.Content = "Unary operations are not permitted";
+                    }
                 }
                 else
                 {

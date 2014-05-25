@@ -14,13 +14,13 @@ namespace Lexer
             //this.Root = Root;
         }
 
-        public void Traverse(SyntaxTree.Node n)
+        public void RemoveGrammarNotation(SyntaxTree.Node n)
         {
             if (n.Children.Count == 0)
             {
 
             } else if (n.Children.Count == 1) {
-                Traverse(n.Children[0] as SyntaxTree.Node);
+                RemoveGrammarNotation(n.Children[0] as SyntaxTree.Node);
                 n.Content = (n.Children[0] as SyntaxTree.Node).Content;
 
                 SyntaxTree.Node Child = n.Children[0] as SyntaxTree.Node;
@@ -32,7 +32,16 @@ namespace Lexer
                 n.Children.RemoveAt(0);
                 
             } else if (n.Children.Count == 2) {
-                throw new Exception("Two children in SyntaxTree? ");
+                //throw new Exception("Two children in SyntaxTree? ");
+                if (((SyntaxTree.Node)n.Children[0]).Content == "-")
+                {
+
+                    n.Children.RemoveAt(0);
+                    RemoveGrammarNotation(n.Children[0] as SyntaxTree.Node);
+                    n.Content = "-" + ((SyntaxTree.Node)n.Children[0]).Content;
+                    n.Children.RemoveAt(0);
+                    
+                }
             }
             else if (n.Children.Count == 3)
             {
@@ -41,7 +50,7 @@ namespace Lexer
 
                     n.Children.RemoveAt(0);
                     n.Children.RemoveAt(1);
-                    Traverse(n.Children[0] as SyntaxTree.Node);
+                    RemoveGrammarNotation(n.Children[0] as SyntaxTree.Node);
                     n.Content = (n.Children[0] as SyntaxTree.Node).Content;
 
                     SyntaxTree.Node Child = n.Children[0] as SyntaxTree.Node;
@@ -57,9 +66,9 @@ namespace Lexer
                 {
 
                  
-                    Traverse(n.Children[0] as SyntaxTree.Node);
-                    Traverse(n.Children[1] as SyntaxTree.Node);
-                    Traverse(n.Children[2] as SyntaxTree.Node);
+                    RemoveGrammarNotation(n.Children[0] as SyntaxTree.Node);
+                    RemoveGrammarNotation(n.Children[1] as SyntaxTree.Node);
+                    RemoveGrammarNotation(n.Children[2] as SyntaxTree.Node);
 
                     float a = float.Parse((n.Children[0] as SyntaxTree.Node).Content);
                     float b = float.Parse((n.Children[2] as SyntaxTree.Node).Content);
