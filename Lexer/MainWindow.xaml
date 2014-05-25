@@ -55,14 +55,21 @@
                     <Label Name ="SyntaxResultLabel" HorizontalAlignment="Left" Margin="168,42,0,0" VerticalAlignment="Top" Width="198" Height="24"/>
                 </Grid>
             </TabItem>
-           
+
             <TabItem Header="Польський запис">
                 <Grid Background="#FFE5E5E5">
-                    <Button Content="ToInfix" HorizontalAlignment="Left" Margin="284,45,0,0" VerticalAlignment="Top" Width="75"/>
-                    <TextBox Name="PolishExprTextBox" HorizontalAlignment="Left" Height="23" Margin="62,67,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="284,95,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
-                    <Button Content="ToPostFix" HorizontalAlignment="Left" Margin="284,70,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Label Name="PolishLabel" Content="Label" HorizontalAlignment="Left" Margin="62,95,0,0" VerticalAlignment="Top" Width="120" Height="30"/>
+                    <Label x:Name="PolishLabel_Copy3" Content="Enter expression:" HorizontalAlignment="Left" Margin="76,13,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="0.867,-0.633"/>
+                    <TextBox Name="PolishExprTextBox" HorizontalAlignment="Left" Height="23" Margin="181,17,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Button Content="Convert" HorizontalAlignment="Left" Margin="181,45,0,0" VerticalAlignment="Top" Width="120" Click="Convert"/>
+
+                    <Button Content="Evaluate expression" HorizontalAlignment="Left" Margin="181,142,0,0" VerticalAlignment="Top" Width="120" Click="Evaluate"/>
+                    <Label Content="Prefix notation:" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="120" Height="30"/>
+                    <Label Content="Postfix notation:" HorizontalAlignment="Left" Margin="381,60,0,0" VerticalAlignment="Top" Width="120" Height="30"/>
+                    <Label x:Name="PrefixLabel" Content="" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="120" Height="30"/>
+                    <Label x:Name="PostfixLabel" Content="" HorizontalAlignment="Left" Margin="333,90,0,0" VerticalAlignment="Top" Width="120" Height="30"/>
+                    <Label Name="PolishResult" Content="" HorizontalAlignment="Left" Margin="181,182,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label Name="PolishInvalidExpression" Content="" HorizontalAlignment="Left" Margin="306,17,0,0" VerticalAlignment="Top" Width="195" Height="26"/>
+
                 </Grid>
             </TabItem>
         </TabControl>

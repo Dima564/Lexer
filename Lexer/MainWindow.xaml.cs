@@ -187,6 +187,51 @@ namespace Lexer
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Convert(object sender, RoutedEventArgs e)
+        {
+            PolishInvalidExpression.Content = "";
+            PrefixLabel.Content = "";
+            PostfixLabel.Content = "";
+            PolishResult.Content = "";
+
+            String text = PolishExprTextBox.Text;
+            if (text.Length > 0)
+            {
+                Scanner.SetInput(text);
+                ArrayList lexemes = Scanner.GetLexemes();
+                Parser.InitParser(lexemes);
+
+                if (Parser.Match())
+                {
+                    PrefixLabel.Content = PolishNotation.ToString(PolishNotation.InfixToPrefix(lexemes));
+                    PostfixLabel.Content = PolishNotation.ToString(PolishNotation.InfixToPostfix(lexemes));
+                }
+                else
+                {
+                    PolishInvalidExpression.Foreground = Brushes.Red;
+                    PolishInvalidExpression.Content = "The expression is incorrect.";
+                    return;
+                }
+            }
+        }
+
+        private void Evaluate(object sender, RoutedEventArgs e)
+        {
+            if (PolishInvalidExpression.Content == "")
+            {
+                String text = PolishExprTextBox.Text;
+                Scanner.SetInput(text);
+                ArrayList lexemes = Scanner.GetLexemes();
+                ArrayList postfixLexemes = PolishNotation.InfixToPostfix(lexemes);
+                PolishResult.Content = PolishNotation.EvaluatePostfix(postfixLexemes);
+            }
+        }
+
 
     }
 }
