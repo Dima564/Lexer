@@ -24,5 +24,25 @@ namespace Lexer
 
         public int Type;
         public Object Value;
+
+        public Token(int type, Object value)
+        {
+            Type = type;
+            Value = value;
+        }
+
+        public Token()
+        {
+
+        }
+
+        public bool isOperator()
+        {
+            return Type == T_PLUS || Type == T_MINUS || Type == T_MULT || Type == T_DIVIDE;
+        }
+
+        public bool isNumber() {
+            return Type == T_INTEGER || Type == T_FLOAT;
+        }
     }
 }

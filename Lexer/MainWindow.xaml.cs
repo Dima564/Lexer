@@ -175,5 +175,18 @@ namespace Lexer
         }
 
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Scanner.SetInput(PolishExprTextBox.Text);
+            ArrayList lexemes = Scanner.GetLexemes();
+
+            //Console.WriteLine(PolishNotation.ToString(PolishNotation.InfixToPostfix(lexemes)));
+            Console.WriteLine(PolishNotation.ToString(PolishNotation.InfixToPrefix(lexemes)));
+
+            //Console.WriteLine(PolishNotation.EvaluatePostfix(PolishNotation.InfixToPostfix(lexemes)));
+
+        }
+
+
     }
 }

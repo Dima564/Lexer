@@ -62,6 +62,7 @@
     </ApplicationDefinition>
     <Compile Include="ExpressionTree.cs" />
     <Compile Include="Parser.cs" />
+    <Compile Include="PolishNotation.cs" />
     <Compile Include="SyntaxTree.cs" />
     <Compile Include="Token.cs" />
     <Compile Include="TreeDrawer.cs" />
