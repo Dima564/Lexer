@@ -131,7 +131,7 @@ namespace Lexer
             if (Root != null)
             {
                 new ExpressionTree().RemoveGrammarNotation(Root);
-                new TreeWindow(TreeDrawer.DrawTree(Root,3)).Show();
+                new TreeWindow(TreeDrawer.DrawTree(Root,2)).Show();
 
             }
            
@@ -169,7 +169,7 @@ namespace Lexer
 
             SyntaxTree.Node Root = new SyntaxTree(lexemes).GetRoot();
             if (Root != null)
-                new TreeWindow(TreeDrawer.DrawTree(Root)).Show();
+                new TreeWindow(TreeDrawer.DrawTree(Root,2)).Show();
             
           
         }
@@ -200,6 +200,7 @@ namespace Lexer
                     }
                     catch (Exception ex)
                     {
+                        PolishInvalidExpression.Foreground = Brushes.Red;
                         PolishInvalidExpression.Content = "Unary operations are not permitted";
                     }
                 }

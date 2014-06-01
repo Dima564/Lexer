@@ -58,9 +58,9 @@
 
             <TabItem Header="Польський запис">
                 <Grid Background="#FFE5E5E5">
-                    <Label x:Name="PolishLabel_Copy3" Content="Enter expression:" HorizontalAlignment="Left" Margin="76,13,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="0.867,-0.633"/>
-                    <TextBox Name="PolishExprTextBox" HorizontalAlignment="Left" Height="23" Margin="181,17,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                    <Button Content="Convert" HorizontalAlignment="Left" Margin="181,45,0,0" VerticalAlignment="Top" Width="120" Click="Convert"/>
+                    <Label x:Name="PolishLabel_Copy3" Content="Enter expression:" HorizontalAlignment="Left" Margin="59,13,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="0.867,-0.633"/>
+                    <TextBox Name="PolishExprTextBox" HorizontalAlignment="Left" Height="23" Margin="164,17,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Button Content="Convert" HorizontalAlignment="Left" Margin="164,45,0,0" VerticalAlignment="Top" Width="120" Click="Convert"/>
 
                     <Button Content="Evaluate expression" HorizontalAlignment="Left" Margin="181,142,0,0" VerticalAlignment="Top" Width="120" Click="Evaluate"/>
                     <Label Content="Prefix notation:" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="120" Height="30"/>
@@ -68,7 +68,7 @@
                     <Label x:Name="PrefixLabel" Content="" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="120" Height="30"/>
                     <Label x:Name="PostfixLabel" Content="" HorizontalAlignment="Left" Margin="333,90,0,0" VerticalAlignment="Top" Width="120" Height="30"/>
                     <Label Name="PolishResult" Content="" HorizontalAlignment="Left" Margin="181,182,0,0" VerticalAlignment="Top" Width="120"/>
-                    <Label Name="PolishInvalidExpression" Content="" HorizontalAlignment="Left" Margin="306,17,0,0" VerticalAlignment="Top" Width="195" Height="26"/>
+                    <Label Name="PolishInvalidExpression" Content="" HorizontalAlignment="Left" Margin="289,14,0,0" VerticalAlignment="Top" Width="222" Height="26"/>
 
                 </Grid>
             </TabItem>

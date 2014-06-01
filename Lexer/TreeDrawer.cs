@@ -14,7 +14,7 @@ namespace Lexer
     static class TreeDrawer
     {
 
-        private static int WIDENING_LEVEL = 5;
+        private static int WIDENING_LEVEL = 2;
         private const int LEVEL_HEIGHT = 50;
         private static int minX = int.MaxValue;
         private static int maxX = 0;
