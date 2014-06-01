@@ -367,7 +367,7 @@ namespace Lexer
 
         private void instr(object sender, RoutedEventArgs e)
         {
-            new InfoWindow("instruction.png").Show();
+            new InfoWindow(".png").Show();
 
         }
 
