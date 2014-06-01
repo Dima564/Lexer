@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Printing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,6 +65,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ExpressionTree.cs" />
+    <Compile Include="InfoWindow.xaml.cs">
+      <DependentUpon>InfoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Parser.cs" />
     <Compile Include="PolishNotation.cs" />
     <Compile Include="Resources\Strings.Designer.cs">
@@ -95,6 +99,10 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Page Include="InfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Strings.en.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -157,7 +165,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -169,6 +176,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ArabicTransitions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\automata.PNG" />
+    <Resource Include="Resources\grammar.PNG" />
+    <Resource Include="Resources\lexical_info.PNG" />
+    <Resource Include="Resources\polish.PNG" />
+    <Resource Include="Resources\syntax_info.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -325,6 +325,54 @@ namespace Lexer
             }
         }
 
+        private void LexicalInfo(object sender, RoutedEventArgs e)
+        {
+            new InfoWindow("lexical_info.png").Show();
+        }
+
+        private void SyntaxInfo(object sender, RoutedEventArgs e)
+        {
+            new InfoWindow("syntax_info.png").Show();
+        }
+
+        private void GrammarInfo(object sender, RoutedEventArgs e)
+        {
+            new InfoWindow("grammar.png").Show();
+
+        }
+
+        private void PolishInfo(object sender, RoutedEventArgs e)
+        {
+            new InfoWindow("polish.png").Show();
+
+        }
+
+        private void AutomataInfo(object sender, RoutedEventArgs e)
+        {
+            new InfoWindow("automata.png").Show();
+
+        }
+
+        private void about_prg(object sender, RoutedEventArgs e)
+        {
+            new InfoWindow("about_program.png").Show();
+
+        }
+
+        private void about_author(object sender, RoutedEventArgs e)
+        {
+            new InfoWindow("about_author.png").Show();
+
+        }
+
+        private void instr(object sender, RoutedEventArgs e)
+        {
+            new InfoWindow("instruction.png").Show();
+
+        }
+
+   
+
 
        
 

@@ -9,24 +9,24 @@
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top" Height="21">
-                <MenuItem Name="Information" Header="Information">
-                    <MenuItem Name="Lexical_menuItem" Header="Лексичний аналізатор"/>
-                    <MenuItem Name="Syntax_menuItem" Header="Синтакчичний аналізатор"/>
-                    <MenuItem Name="Grammar_menuItem" Header="Граматики"/>
-                    <MenuItem Name="Polish_menuItem" Header="Польська нотація"/>
-                    <MenuItem Name="Automata_menuItem" Header="Скінченні автомати"/>
+                <MenuItem Name="Information" Header="Information" Width="83">
+                    <MenuItem Name="Lexical_menuItem" Header="Лексичний аналізатор" Click="LexicalInfo" />
+                    <MenuItem Name="Syntax_menuItem" Header="Синтакчичний аналізатор" Click="SyntaxInfo"/>
+                    <MenuItem Name="Grammar_menuItem" Header="Граматики" Click="GrammarInfo"/>
+                    <MenuItem Name="Polish_menuItem" Header="Польська нотація" Click="PolishInfo"/>
+                    <MenuItem Name="Automata_menuItem" Header="Скінченні автомати" Click="AutomataInfo"/>
                 </MenuItem>
-                <MenuItem Name="Help" Header="Help">
-                    <MenuItem Name="About_program" Header="About program"/>
-                    <MenuItem Name="About_author" Header="About author"/>
-                    <MenuItem Name="Instructions" Header="Instructions"/>
+                <MenuItem Name="Help" Header="Help" Width="90">
+                    <MenuItem Name="About_program" Header="About program" Click="about_prg"/>
+                    <MenuItem Name="About_author" Header="About author" Click="about_author"/>
+                    <MenuItem Name="Instructions" Header="Instructions" Click="instr"/>
                 </MenuItem>
 
-                <MenuItem Name="Settings" Header="Settings" Width="55">
+                <MenuItem Name="Settings" Header="Settings" Width="112">
                     <MenuItem Name="English_lang" Header="English" Click="changeLocaleToEng"/>
                     <MenuItem Name="Ukrainian_lang" Header="English" Click="changeLocaleToUkr"/>
                 </MenuItem>
-                
+
                 <StackPanel Height="100" Width="100"/>
 
             </Menu>
@@ -45,29 +45,30 @@
             <TabItem Name="Grammar_tab" Header="Граматики">
                 <Grid Background="#FFE5E5E5">
                     <Label Name="Grammar_expression_label" Content="Enter your expression here:" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top"/>
-                    <TextBox  x:Name="GrammarExpressionTextBox" HorizontalAlignment="Left" Height="23" Margin="168,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
-                    <Button Name="Show_grammar_tree" Content="Show grammar tree" HorizontalAlignment="Left" Margin="370,14,0,0" VerticalAlignment="Top" Width="131" Height="23" Click="ShowGrammarTree"/>
+                    <TextBox  x:Name="GrammarExpressionTextBox" HorizontalAlignment="Left" Height="23" Margin="168,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+                    <Button Name="Show_grammar_tree" Content="Show grammar tree" HorizontalAlignment="Left" Margin="334,14,0,0" VerticalAlignment="Top" Width="167" Height="28" Click="ShowGrammarTree"/>
                     <Label Name ="GrammarResultLabel" HorizontalAlignment="Left" Margin="168,42,0,0" VerticalAlignment="Top" Width="197" Height="24"/>
                 </Grid>
             </TabItem>
             <TabItem Name="Syntax" Header="Синатксичний аналіз">
                 <Grid Name="LexerGrid" Background="#FFE5E5E5">
+     
                     <Label Name="Syntax_expr_label" Content="Enter your expression here:" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top"/>
-                    <TextBox  x:Name="SyntaxExpressionTextBox" HorizontalAlignment="Left" Height="23" Margin="168,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198"/>
-                    <Button Name="Show_syntax_tree_button" Content="Show syntax tree" HorizontalAlignment="Left" Margin="371,14,0,0" VerticalAlignment="Top" Width="130" Click="ShowSyntaxTree" Height="23"/>
-                    <Label Name ="SyntaxResultLabel" HorizontalAlignment="Left" Margin="168,42,0,0" VerticalAlignment="Top" Width="198" Height="24"/>
+                    <TextBox  x:Name="SyntaxExpressionTextBox" HorizontalAlignment="Left" Height="23" Margin="168,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
+                    <Button Name="Show_syntax_tree_button" Content="Show syntax tree" HorizontalAlignment="Left" Margin="321,14,0,0" VerticalAlignment="Top" Width="180" Click="ShowSyntaxTree" Height="23" Grid.ColumnSpan="2"/>
+                    <Label Name ="SyntaxResultLabel" HorizontalAlignment="Left" Margin="168,42,0,0" VerticalAlignment="Top" Width="198" Height="24" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
 
             <TabItem Name="Polish_tab" Header="Польський запис">
                 <Grid Background="#FFE5E5E5">
-                    <Label x:Name="Polish_expression_label" Content="Enter expression:" HorizontalAlignment="Left" Margin="59,13,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="0.867,-0.633"/>
+                    <Label x:Name="Polish_expression_label" Content="Enter expression:" HorizontalAlignment="Left" Margin="33,13,0,0" VerticalAlignment="Top" Width="126" Height="30" RenderTransformOrigin="0.867,-0.633"/>
                     <TextBox Name="PolishExprTextBox" HorizontalAlignment="Left" Height="23" Margin="164,17,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                     <Button Content="Convert" Name="ConvertButton" HorizontalAlignment="Left" Margin="164,45,0,0" VerticalAlignment="Top" Width="120" Click="Convert"/>
 
-                    <Button Name="Evaluate_polish" Content="Evaluate expression" HorizontalAlignment="Left" Margin="181,142,0,0" VerticalAlignment="Top" Width="120" Click="Evaluate"/>
-                    <Label Name="Prefix_notation" Content="Prefix notation:" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="120" Height="30"/>
-                    <Label Name="Postfix_notation" Content="Postfix notation:" HorizontalAlignment="Left" Margin="381,60,0,0" VerticalAlignment="Top" Width="120" Height="30"/>
+                    <Button Name="Evaluate_polish" Content="Evaluate expression" HorizontalAlignment="Left" Margin="181,142,0,0" VerticalAlignment="Top" Width="137" Click="Evaluate"/>
+                    <Label Name="Prefix_notation" Content="Prefix notation:" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="130" Height="30"/>
+                    <Label Name="Postfix_notation" Content="Postfix notation:" HorizontalAlignment="Left" Margin="343,60,0,0" VerticalAlignment="Top" Width="158" Height="30"/>
                     <Label x:Name="PrefixLabel" Content="" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="120" Height="30"/>
                     <Label x:Name="PostfixLabel" Content="" HorizontalAlignment="Left" Margin="333,90,0,0" VerticalAlignment="Top" Width="120" Height="30"/>
                     <Label Name="PolishResult" Content="" HorizontalAlignment="Left" Margin="181,182,0,0" VerticalAlignment="Top" Width="120"/>

@@ -106,7 +106,7 @@ namespace Lexer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Course Project.
+        ///   Looks up a localized string similar to LeXer.
         /// </summary>
         internal static string course_project {
             get {
