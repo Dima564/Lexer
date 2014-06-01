@@ -121,6 +121,7 @@ namespace Lexer
 
         public static float EvaluatePostfix(ArrayList postfixLexemes)
         {
+
             Stack<float> stack = new Stack<float>();
             foreach (Token token in postfixLexemes)
                 if (token.isOperator())

@@ -19,15 +19,19 @@ namespace Lexer
     /// </summary>
     public partial class StartUp : Window
     {
+     
         public StartUp()
         {
             InitializeComponent();
+            Header.Content = FindResource("course_project").ToString();
+            Begin.Content = FindResource("start").ToString();
         }
 
         private void Start(object sender, RoutedEventArgs e)
         {
             new MainWindow().Show();
             this.Close();
+
         }
     }
 }

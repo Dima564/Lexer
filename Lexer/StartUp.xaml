@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="StartUp" Height="395" Width="455">
     <Grid Margin="0,0,2,5">
-        <Button Content="Begin" HorizontalAlignment="Left" Margin="348,318,0,0" VerticalAlignment="Top" Width="87" Click="Start" Height="33" Grid.ZIndex ="1" />
-        <Label Content="Курсова робота" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="368" Background="Transparent" Grid.ZIndex ="2" FontWeight="Bold" FontFamily="Halvetica" FontSize="20"/>
+        <Button Name="Begin" Content="Begin" HorizontalAlignment="Left" Margin="348,318,0,0" VerticalAlignment="Top" Width="87" Click="Start" Height="33" Grid.ZIndex ="1" />
+        <Label Name="Header" Content="Course Project" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="368" Background="Transparent" Grid.ZIndex ="2" FontWeight="Bold" FontFamily="Halvetica" FontSize="20"/>
         <Image Margin="0,10,10,10" Source="ArabicTransitions.png" Stretch="Fill" Grid.ZIndex ="0" OpacityMask="#80000000"/>
-
+       
     </Grid>
 </Window>

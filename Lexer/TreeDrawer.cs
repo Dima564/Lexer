@@ -14,7 +14,7 @@ namespace Lexer
     static class TreeDrawer
     {
 
-        private static int WIDENING_LEVEL = 2;
+        private static int WIDENING_LEVEL = 3;
         private const int LEVEL_HEIGHT = 50;
         private static int minX = int.MaxValue;
         private static int maxX = 0;
@@ -138,7 +138,7 @@ namespace Lexer
             label.Text = content;
             label.Width = 60;
             label.TextAlignment = TextAlignment.Center;
-            label.Margin = new Thickness(x - 20, y - 10, 0, 0);
+            label.Margin = new Thickness(x - 20, y-5, 0, 0);
             c.Children.Add(label);
         }
 
