@@ -1,0 +1,45 @@
+﻿<ResourceDictionary 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!-- String resource that can be localized -->
+    <system:String x:Key="convert">Convert</system:String>
+    <system:String x:Key="course_project">Course project</system:String>
+    <system:String x:Key="author_name">Dima Kovalenko</system:String>
+    <system:String x:Key="start">Start</system:String>
+    <system:String x:Key="lexical_tab">Lexical analysis</system:String>
+    <system:String x:Key="syntax_tab">Syntax analysis</system:String>
+    <system:String x:Key="grammar_tab">Grammars</system:String>
+    <system:String x:Key="polish_tab">Polish notation</system:String>
+    <system:String x:Key="automata_tab">Automata</system:String>
+    <system:String x:Key="information">Information</system:String>
+    <system:String x:Key="settings">Settings</system:String>
+    <system:String x:Key="help">Help</system:String>
+    <system:String x:Key="About_program">About program</system:String>
+    <system:String x:Key="About_author">About author</system:String>
+    <system:String x:Key="Instructions">Instructions</system:String>
+    <system:String x:Key="Expression_label">Enter your expression here:</system:String>
+    <system:String x:Key="Lexical_analyze_button">Analyze</system:String>
+    <system:String x:Key="show_grammar_tree">Show grammar tree</system:String>
+    <system:String x:Key="show_sytntax_tree">Show syntax tree</system:String>
+    <system:String x:Key="Prefix_notation">Prefix notation:</system:String>
+    <system:String x:Key="Postfix_notation">Postfix notation</system:String>
+    <system:String x:Key="Evaluate_polish">Evaluate expression</system:String>
+
+
+    <system:String x:Key="Enter_expression_error">Enter expression!</system:String>
+    <system:String x:Key="invalid_expr">The expression is incorrect.</system:String>
+    <system:String x:Key="unary_error">Unary operations are not permitted</system:String>
+    <system:String x:Key="valid_expr">The expression is correct.</system:String>
+    <system:String x:Key="Empty_error">Field is empty. Please, enter expression</system:String>
+
+
+    <system:String x:Key="parans">Parans: </system:String>
+    <system:String x:Key="op">Operation:</system:String>
+    <system:String x:Key="float">"Float: </system:String>
+    <system:String x:Key="int">Integer:</system:String>
+    <system:String x:Key="error">Error: :</system:String>
+
+
+</ResourceDictionary>
