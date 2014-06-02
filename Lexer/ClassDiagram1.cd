@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Lexer.ExpressionTree">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAEAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExpressionTree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lexer.InfoWindow">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InfoWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lexer.MainWindow">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAQJACAAjIAAgiAACAAAAAAAIACIEgAAQAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lexer.Parser">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAIgFAAAAABAAgAAAAAAAAAAAAAAAQEQAAAAAAAAA=</HashCode>
+      <FileName>Parser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lexer.PolishNotation">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAEAAAAEAQAAAAAAAAAAAAFAAAAAAA=</HashCode>
+      <FileName>PolishNotation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lexer.Scanner">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAQgAAAAAAAAAABQAAAAAAAAQACA=</HashCode>
+      <FileName>Scanner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lexer.StartUp">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StartUp.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lexer.SyntaxTree">
+    <Position X="4" Y="2.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Lexer.SyntaxTree.Node" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>SyntaxTree.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AIIgIIBAAACABCAgAAAAAAAAAAAAAAAQEQAAAAAAAAA=</HashCode>
+      <FileName>SyntaxTree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lexer.Token">
+    <Position X="2.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAQAABBgAAAAAIAAAAEAAAAgAAAAAAAAYAgAAAoAAA=</HashCode>
+      <FileName>Token.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lexer.TreeDrawer">
+    <Position X="7.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABgAAAAAEAAAAAAAAAEAAAAAgAAAgAAABAAAADAAAAA=</HashCode>
+      <FileName>TreeDrawer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lexer.TreeWindow">
+    <Position X="5.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAEIAAAAAAAAAAgBAAAAAAAAAAAggAABA=</HashCode>
+      <FileName>TreeWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

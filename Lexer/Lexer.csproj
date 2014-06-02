@@ -180,6 +180,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.en-GB.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -191,9 +192,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ArabicTransitions.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\img1.bmp" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\automata.PNG" />
@@ -218,6 +216,15 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\about_author.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\about_program.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\instructions.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

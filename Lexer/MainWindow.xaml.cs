@@ -247,7 +247,7 @@ namespace Lexer
 
         private void Evaluate(object sender, RoutedEventArgs e)
         {
-            if (PolishInvalidExpression.Content == "" && PostfixLabel.Content.ToString().Length > 0)
+            if (PolishInvalidExpression.Content.ToString().Equals("") && PostfixLabel.Content.ToString().Length > 0)
             {
                 String text = PolishExprTextBox.Text;
                 Scanner.SetInput(text);
@@ -367,7 +367,7 @@ namespace Lexer
 
         private void instr(object sender, RoutedEventArgs e)
         {
-            new InfoWindow(".png").Show();
+            new InfoWindow("instructions.png").Show();
 
         }
 
